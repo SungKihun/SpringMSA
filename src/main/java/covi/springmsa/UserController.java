@@ -19,12 +19,22 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public CompletableFuture<User> createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public void createUser(@RequestBody User user) {
+        userService.saveUser(user);
     }
 
     @GetMapping("/{userId}")
-    public CompletableFuture<User> getUserById(@PathVariable Long userId) {
+    public String getUserById(@PathVariable long userId) {
         return userService.getUserById(userId);
     }
+
+//    @PostMapping
+//    public CompletableFuture<User> createUser(@RequestBody User user) {
+//        return userService.createUser(user);
+//    }
+
+//    @GetMapping("/{userId}")
+//    public CompletableFuture<User> getUserById(@PathVariable Long userId) {
+//        return userService.getUserById(userId);
+//    }
 }
